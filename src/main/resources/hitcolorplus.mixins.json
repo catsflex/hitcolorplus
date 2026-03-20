@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.catsflex.${mod_id}.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ArmorHitColor",
+    "EntityHitColor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

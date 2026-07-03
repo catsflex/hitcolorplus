@@ -1,10 +1,7 @@
 {
-  "config.hitcolorplus.title": "Настройки ${mod_name}",
-  "config.hitcolorplus.category.general": "Основные настройки",
-  "config.hitcolorplus.option.enabled.name": "Включён",
-  "config.hitcolorplus.option.enabled.description": "Выключите, чтобы вернуть стандартный красный цвет при получении урона.",
-  "config.hitcolorplus.option.color_armor.name": "Окрашивать броню",
-  "config.hitcolorplus.option.color_armor.description": "Применять кастомный цвет к надетой броне при ударе.",
-  "config.hitcolorplus.option.hit_color.name": "Цвет урона",
-  "config.hitcolorplus.option.hit_color.description": "Выберите цвет, в который будут окрашиваться сущности при получении урона."
+	"config.hitcolorplus.title": "Настройки ${mod_name}",
+	"config.hitcolorplus.category.general": "Основные настройки",
+	"config.hitcolorplus.group.main": "Основное",
+	"config.hitcolorplus.option.isEnabled.name": "Включён",
+	"config.hitcolorplus.option.isEnabled.description": "Включает или выключает все функции мода."
 }

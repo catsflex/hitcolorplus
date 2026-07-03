@@ -1,10 +1,7 @@
 {
-  "config.hitcolorplus.title": "${mod_name} Settings",
-  "config.hitcolorplus.category.general": "General Settings",
-  "config.hitcolorplus.option.enabled.name": "Enabled",
-  "config.hitcolorplus.option.enabled.description": "Turn off to use the vanilla red hit color.",
-  "config.hitcolorplus.option.color_armor.name": "Color armor",
-  "config.hitcolorplus.option.color_armor.description": "Apply the custom color to armor when taking damage.",
-  "config.hitcolorplus.option.hit_color.name": "Hit color",
-  "config.hitcolorplus.option.hit_color.description": "Choose the color that appears when taking damage."
+	"config.hitcolorplus.title": "${mod_name} Settings",
+	"config.hitcolorplus.category.general": "General Settings",
+	"config.hitcolorplus.group.main": "Main",
+	"config.hitcolorplus.option.isEnabled.name": "Enabled",
+	"config.hitcolorplus.option.isEnabled.description": "Toggles all mod features."
 }

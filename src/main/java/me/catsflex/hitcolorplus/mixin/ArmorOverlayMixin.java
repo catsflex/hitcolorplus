@@ -1,5 +1,7 @@
 package me.catsflex.hitcolorplus.mixin;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import me.catsflex.hitcolorplus.config.ModConfig;
 import me.catsflex.hitcolorplus.util.OverlayStateTracker;
 import me.catsflex.hitcolorplus.util.OverlayUtil;
@@ -10,12 +12,11 @@ import net.minecraft.resources.Identifier;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(EquipmentLayerRenderer.class)
 public abstract class ArmorOverlayMixin {
 	
-	@Redirect(
+	@WrapOperation(
 		method = "renderLayers(Lnet/minecraft/client/resources/model/EquipmentClientInfo$LayerType;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lnet/minecraft/world/item/ItemStack;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/resources/Identifier;II)V",
 		at = @At(
 			value = "FIELD",
@@ -23,26 +24,26 @@ public abstract class ArmorOverlayMixin {
 			opcode = Opcodes.GETSTATIC
 		)
 	)
-	private int changeArmorOverlay() {
+	private int changeArmorOverlay(Operation<Integer> original) {
 		final var config = ModConfig.getInstance();
 		if (!config.isEnabled.get() || !config.shouldColorArmor.get() || !OverlayStateTracker.get()) {
-			return OverlayUtil.NO_OVERLAY;
+			return original.call();
 		}
 		
 		return OverlayUtil.ARMOR_OVERLAY;
 	}
 	
-	@Redirect(
+	@WrapOperation(
 		method = "renderLayers(Lnet/minecraft/client/resources/model/EquipmentClientInfo$LayerType;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lnet/minecraft/world/item/ItemStack;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/resources/Identifier;II)V",
 		at = @At(
 			value = "INVOKE",
 			target = "Lnet/minecraft/client/renderer/rendertype/RenderTypes;armorCutoutNoCull(Lnet/minecraft/resources/Identifier;)Lnet/minecraft/client/renderer/rendertype/RenderType;"
 		)
 	)
-	private RenderType changeArmorRenderType(Identifier identifier) {
+	private RenderType changeArmorRenderType(Identifier identifier, Operation<RenderType> original) {
 		final var config = ModConfig.getInstance();
 		if (!config.isEnabled.get() || !config.shouldColorArmor.get()) {
-			return RenderTypes.armorCutoutNoCull(identifier);
+			return original.call(identifier);
 		}
 		
 		// Swap with the entities' render type to accept colors.

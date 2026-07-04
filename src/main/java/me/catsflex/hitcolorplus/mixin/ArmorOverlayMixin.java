@@ -24,7 +24,7 @@ public abstract class ArmorOverlayMixin {
 			opcode = Opcodes.GETSTATIC
 		)
 	)
-	private int changeArmorOverlay(Operation<Integer> original) {
+	private int addArmorOverlay(Operation<Integer> original) {
 		final var config = ModConfig.getInstance();
 		if (!config.isEnabled.get() || !config.shouldColorArmor.get() || !OverlayStateTracker.get()) {
 			return original.call();

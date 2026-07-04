@@ -24,9 +24,9 @@ public abstract class OverlayStateTrackerMixin {
 	
 	@Inject(
 		method = "submit(Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;Lnet/minecraft/client/renderer/state/CameraRenderState;)V",
-		at = @At("RETURN")
+		at = @At("TAIL")
 	)
 	private void clearDamageState(LivingEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState, CallbackInfo ci) {
-		OverlayStateTracker.set(false);
+		OverlayStateTracker.clear();
 	}
 }

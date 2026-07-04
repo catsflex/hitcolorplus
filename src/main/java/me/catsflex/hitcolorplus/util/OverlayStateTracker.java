@@ -11,5 +11,9 @@ public final class OverlayStateTracker {
 		HAS_OVERLAY.set(value);
 	}
 	
+	public static void clear() {
+		HAS_OVERLAY.remove();
+	}
+	
 	private OverlayStateTracker() {}
 }

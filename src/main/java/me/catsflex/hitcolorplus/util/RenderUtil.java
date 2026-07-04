@@ -5,9 +5,9 @@ import com.mojang.blaze3d.platform.NativeImage;
 import java.awt.*;
 
 public abstract class RenderUtil {
-	public static final Color VANILLA_RED_OVERLAY = new Color(0x4DFF0000, true);
+	public static final Color VANILLA_OVERLAY_COLOR = new Color(0x4DFF0000, true);
 	
-	public static void fillOverlayRow(NativeImage image, int y, Color hitColor) {
+	public static void fillOverlayRow(NativeImage image, int y, int hitColor) {
 		final int width = image.getWidth();
 		final int overlayColor = colorToOverlayARGB(hitColor);
 		
@@ -26,8 +26,8 @@ public abstract class RenderUtil {
 		}
 	}
 	
-	private static int colorToOverlayARGB(Color color) {
+	private static int colorToOverlayARGB(int color) {
 		// Minecraft overlay expects inverted alpha channel. 
-		return color.getRGB() ^ 0xFF000000;
+		return color ^ 0xFF000000;
 	}
 }

@@ -26,7 +26,7 @@ public class ModConfig {
 	private static final ModConfig _instance = new ModConfig();
 	
 	public final BooleanOption isEnabled = new BooleanOption("isEnabled", true);
-	public final ColorOption globalHitColor = new ColorOption("color", RenderUtil.VANILLA_RED_OVERLAY);
+	public final ColorOption globalHitColor = new ColorOption("color", RenderUtil.VANILLA_OVERLAY_COLOR);
 	public final BooleanOption shouldColorEntities = new BooleanOption("shouldColorEntities", true);
 	public final BooleanOption shouldColorArmor = new BooleanOption("shouldColorArmor", false);
 	

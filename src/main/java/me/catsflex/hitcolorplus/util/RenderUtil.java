@@ -5,8 +5,6 @@ import com.mojang.blaze3d.platform.NativeImage;
 import java.awt.*;
 
 public abstract class RenderUtil {
-	
-	
 	public static final Color VANILLA_RED_OVERLAY = new Color(0x4DFF0000, true);
 	
 	public static void fillOverlayRow(NativeImage image, int y, Color hitColor) {

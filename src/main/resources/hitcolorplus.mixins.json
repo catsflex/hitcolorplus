@@ -4,8 +4,9 @@
 	"package": "me.catsflex.${mod_package_id}.mixin",
 	"compatibilityLevel": "JAVA_${java_version}",
 	"client": [
-		"EquipmentLayerRendererMixin",
-		"LivingEntityRendererMixin",
+		"ArmorOverlayMixin",
+		"EntityOverlayMixin",
+		"OverlayStateTrackerMixin",
 		"OverlayTextureMixin"
 	],
 	"injectors": {

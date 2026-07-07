@@ -19,6 +19,15 @@ public final class YACLHelper {
 	
 	private static final BooleanSupplier ALWAYS_AVAILABLE = () -> true;
 	
+	public static void dependAvailabilityOn(Option<?> target, Option<Boolean> condition) {
+		target.setAvailable(condition.pendingValue());
+		
+		// Add an event listener to update the target option's availability in real time.
+		condition.addEventListener((option, value) -> {
+			target.setAvailable(option.pendingValue());
+		});
+	}
+	
 	// Base settings for all options.
 	private static <T> Option.Builder<T> createBase(ConfigKeyType type, ConfigOption<T> option, BooleanSupplier isAvailable) {
 		return Option.<T>createBuilder()

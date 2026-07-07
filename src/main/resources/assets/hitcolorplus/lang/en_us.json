@@ -1,7 +1,26 @@
 {
 	"config.hitcolorplus.title": "${mod_name} Settings",
 	"config.hitcolorplus.category.general": "General Settings",
+	
 	"config.hitcolorplus.group.main": "Main",
 	"config.hitcolorplus.option.isEnabled.name": "Enabled",
-	"config.hitcolorplus.option.isEnabled.description": "Toggles all mod features."
+	"config.hitcolorplus.option.isEnabled.description": "Toggles all mod features.",
+	"config.hitcolorplus.option.globalHitColor.name": "Global Hit Color",
+	"config.hitcolorplus.option.globalHitColor.description": "The default color applied to all hits.",
+	
+	"config.hitcolorplus.group.entities": "Entities",
+	"config.hitcolorplus.option.shouldColorEntities.name": "Color Entities",
+	"config.hitcolorplus.option.shouldColorEntities.description": "Allows coloring entities when hit.",
+	"config.hitcolorplus.option.shouldOverrideEntityColor.name": "Override Entity Color",
+	"config.hitcolorplus.option.shouldOverrideEntityColor.description": "Uses a custom color for entities instead of the global hit color.",
+	"config.hitcolorplus.option.entityHitColor.name": "Entity Hit Color",
+	"config.hitcolorplus.option.entityHitColor.description": "Custom color used for entities.",
+	
+	"config.hitcolorplus.group.armor": "Armor",
+	"config.hitcolorplus.option.shouldColorArmor.name": "Color Armor",
+	"config.hitcolorplus.option.shouldColorArmor.description": "Allows coloring armor pieces when hit.",
+	"config.hitcolorplus.option.shouldOverrideArmorColor.name": "Override Armor Color",
+	"config.hitcolorplus.option.shouldOverrideArmorColor.description": "Uses a custom color for armor instead of the global hit color.",
+	"config.hitcolorplus.option.armorHitColor.name": "Armor Hit Color",
+	"config.hitcolorplus.option.armorHitColor.description": "Custom color used for armor."
 }

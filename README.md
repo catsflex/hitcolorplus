@@ -2,7 +2,7 @@
 
 A simple mod that lets you:
 
-- Change the entity hit color.
-- Apply the hit color to worn armor models.
+- Change entity and armor hit colors separately.
+- Apply custom hit colors to both entities and worn armor models.
 
 Configure the mod directly in-game using [YetAnotherConfigLib](https://modrinth.com/mod/yacl)!

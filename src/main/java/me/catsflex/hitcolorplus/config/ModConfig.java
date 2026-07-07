@@ -26,9 +26,13 @@ public final class ModConfig {
 	private static final ModConfig INSTANCE = new ModConfig();
 	
 	public final BooleanOption isEnabled = new BooleanOption("isEnabled", true);
-	public final ColorOption globalHitColor = new ColorOption("color", RenderUtil.VANILLA_OVERLAY_COLOR);
+	public final ColorOption globalHitColor = new ColorOption("globalHitColor", RenderUtil.VANILLA_OVERLAY_COLOR);
 	public final BooleanOption shouldColorEntities = new BooleanOption("shouldColorEntities", true);
+	public final BooleanOption shouldOverrideEntityColor = new BooleanOption("shouldOverrideEntityColor", false);
+	public final ColorOption entityHitColor = new ColorOption("entityHitColor", RenderUtil.VANILLA_OVERLAY_COLOR);
 	public final BooleanOption shouldColorArmor = new BooleanOption("shouldColorArmor", false);
+	public final BooleanOption shouldOverrideArmorColor = new BooleanOption("shouldOverrideArmorColor", false);
+	public final ColorOption armorHitColor = new ColorOption("armorHitColor", RenderUtil.VANILLA_OVERLAY_COLOR);
 	
 	private ModConfig() {}
 	

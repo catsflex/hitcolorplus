@@ -1,3 +1,7 @@
+# Notice
+
+**I've started doing Minecraft commissions in my [Discord server](https://discord.gg/Ce6Vty6khA)!**
+
 # HitColor+
 
 A simple mod that lets you:

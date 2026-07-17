@@ -25,6 +25,7 @@ public final class YACLIntegration {
 				.group(YACLHelper.createGroup("main")
 					.option(YACLHelper.tickBoxOption(config.isEnabled))
 					.option(YACLHelper.colorPickerOption(config.globalHitColor, true))
+					.option(YACLHelper.tickBoxOption(config.shouldColorOnlyOnOwnHit))
 					.build())
 				
 				.group(YACLHelper.createGroup("entities")

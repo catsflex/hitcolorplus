@@ -7,6 +7,8 @@
 	"config.hitcolorplus.option.isEnabled.description": "Toggles all mod features.",
 	"config.hitcolorplus.option.globalHitColor.name": "Global Hit Color",
 	"config.hitcolorplus.option.globalHitColor.description": "The default color applied to all hits.",
+	"config.hitcolorplus.option.shouldColorOnlyOnOwnHit.name": "Color Only Own Hits",
+	"config.hitcolorplus.option.shouldColorOnlyOnOwnHit.description": "Only applies the custom color to entities you attack.",
 	
 	"config.hitcolorplus.group.entities": "Entities",
 	"config.hitcolorplus.option.shouldColorEntities.name": "Color Entities",

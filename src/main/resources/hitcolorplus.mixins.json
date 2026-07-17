@@ -6,8 +6,10 @@
 	"client": [
 		"ArmorOverlayMixin",
 		"EntityOverlayMixin",
+		"MinecraftMixin",
 		"OverlayStateTrackerMixin",
-		"OverlayTextureMixin"
+		"OverlayTextureMixin",
+		"PlayerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

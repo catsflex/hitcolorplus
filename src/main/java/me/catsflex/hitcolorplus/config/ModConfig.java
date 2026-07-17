@@ -27,6 +27,7 @@ public final class ModConfig {
 	
 	public final BooleanOption isEnabled = new BooleanOption("isEnabled", true);
 	public final ColorOption globalHitColor = new ColorOption("globalHitColor", RenderUtil.VANILLA_OVERLAY_COLOR);
+	public final BooleanOption shouldColorOnlyOnOwnHit = new BooleanOption("shouldColorOnlyOnOwnHit", false);
 	public final BooleanOption shouldColorEntities = new BooleanOption("shouldColorEntities", true);
 	public final BooleanOption shouldOverrideEntityColor = new BooleanOption("shouldOverrideEntityColor", false);
 	public final ColorOption entityHitColor = new ColorOption("entityHitColor", RenderUtil.VANILLA_OVERLAY_COLOR);

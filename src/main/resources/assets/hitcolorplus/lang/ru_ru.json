@@ -7,10 +7,12 @@
 	"config.hitcolorplus.option.isEnabled.description": "Включает или выключает все функции мода.",
 	"config.hitcolorplus.option.globalHitColor.name": "Глобальный цвет удара",
 	"config.hitcolorplus.option.globalHitColor.description": "Цвет, применяемый к объектам при ударе.",
+	"config.hitcolorplus.option.shouldColorOnlyOnOwnHit.name": "Окрашивание только своих ударов",
+	"config.hitcolorplus.option.shouldColorOnlyOnOwnHit.description": "Подсветка применяется только к сущностям, которых атакуете вы.",
 	
 	"config.hitcolorplus.group.entities": "Сущности",
 	"config.hitcolorplus.option.shouldColorEntities.name": "Окрашивание сущностей",
-	"config.hitcolorplus.option.shouldColorEntities.description": "Разрешает окрашивать сущностей при ударе.",
+	"config.hitcolorplus.option.shouldColorEntities.description": "Подсвечивает сущностей при ударе.",
 	"config.hitcolorplus.option.shouldOverrideEntityColor.name": "Свой цвет для сущностей",
 	"config.hitcolorplus.option.shouldOverrideEntityColor.description": "Использует отдельный цвет для сущностей вместо глобального.",
 	"config.hitcolorplus.option.entityHitColor.name": "Цвет удара по сущности",
@@ -18,7 +20,7 @@
 	
 	"config.hitcolorplus.group.armor": "Броня",
 	"config.hitcolorplus.option.shouldColorArmor.name": "Окрашивание брони",
-	"config.hitcolorplus.option.shouldColorArmor.description": "Разрешает окрашивать броню при ударе.",
+	"config.hitcolorplus.option.shouldColorArmor.description": "Подсвечивает броню при ударе.",
 	"config.hitcolorplus.option.shouldOverrideArmorColor.name": "Свой цвет для брони",
 	"config.hitcolorplus.option.shouldOverrideArmorColor.description": "Использует отдельный цвет для брони вместо глобального.",
 	"config.hitcolorplus.option.armorHitColor.name": "Цвет удара по броне",

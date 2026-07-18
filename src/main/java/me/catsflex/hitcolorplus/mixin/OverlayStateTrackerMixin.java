@@ -19,15 +19,17 @@ public abstract class OverlayStateTrackerMixin {
 	
 	@Inject(
 		method = "extractRenderState(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;F)V",
-		at = @At("RETURN")
+		at = @At("TAIL")
 	)
 	private void filterLocalHits(LivingEntity entity, LivingEntityRenderState state, float partialTick, CallbackInfo ci) {
 		final var config = ModConfig.getInstance();
 		if (!config.isEnabled.get() || !config.shouldColorOnlyOnOwnHit.get()) return;
-		if (!state.hasRedOverlay || HitTracker.isRecentLocalHit(entity.getId())) return;
 		
-		// Remove the damage overlay if the entity wasn't hit by the local player.
-		state.hasRedOverlay = false;
+		if (HitTracker.isRecentLocalHit(entity.getId())) {
+			state.hasRedOverlay = true;
+		} else if (state.hasRedOverlay) {
+			state.hasRedOverlay = false;
+		}
 	}
 	
 	@Inject(

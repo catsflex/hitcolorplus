@@ -25,11 +25,10 @@ public abstract class OverlayStateTrackerMixin {
 		final var config = ModConfig.getInstance();
 		if (!config.isEnabled.get() || !config.shouldColorOnlyOnOwnHit.get()) return;
 		
-		if (HitTracker.isRecentLocalHit(entity.getId())) {
-			state.hasRedOverlay = true;
-		} else if (state.hasRedOverlay) {
-			state.hasRedOverlay = false;
-		}
+		if (!state.hasRedOverlay || HitTracker.isRecentLocalHit(entity.getId())) return;
+		
+		// Disable the overlay if the entity wasn't damaged by local player.
+		state.hasRedOverlay = false;
 	}
 	
 	@Inject(

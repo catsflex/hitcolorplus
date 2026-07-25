@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import me.catsflex.hitcolorplus.config.ModConfig;
 import me.catsflex.hitcolorplus.util.OverlayStateTracker;
 import me.catsflex.hitcolorplus.util.OverlayUtil;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
@@ -48,5 +49,21 @@ public abstract class ArmorOverlayMixin {
 		
 		// Swap with the entities' render type to accept colors.
 		return RenderTypes.entityCutoutNoCull(identifier);
+	}
+	
+	@WrapOperation(
+		method = "renderLayers(Lnet/minecraft/client/resources/model/EquipmentClientInfo$LayerType;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/client/model/Model;Ljava/lang/Object;Lnet/minecraft/world/item/ItemStack;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;ILnet/minecraft/resources/Identifier;II)V",
+		at = @At(
+			value = "INVOKE",
+			target = "Lnet/minecraft/client/renderer/Sheets;armorTrimsSheet(Z)Lnet/minecraft/client/renderer/rendertype/RenderType;"
+		)
+	)
+	private RenderType changeArmorTrimRenderType(boolean decal, Operation<RenderType> original) {
+		final var config = ModConfig.getInstance();
+		if (!config.isEnabled.get() || !config.shouldColorArmor.get()) {
+			return original.call(decal);
+		}
+		
+		return RenderTypes.entityCutoutNoCull(Sheets.ARMOR_TRIMS_SHEET);
 	}
 }

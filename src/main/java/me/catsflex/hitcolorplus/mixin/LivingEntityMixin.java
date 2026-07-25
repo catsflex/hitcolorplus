@@ -1,6 +1,5 @@
 package me.catsflex.hitcolorplus.mixin;
 
-import me.catsflex.hitcolorplus.config.ModConfig;
 import me.catsflex.hitcolorplus.util.HitTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.damagesource.DamageSource;
@@ -15,9 +14,6 @@ public abstract class LivingEntityMixin {
 	
 	@Inject(method = "handleDamageEvent", at = @At("HEAD"))
 	private void registerAnyDamage(DamageSource source, CallbackInfo ci) {
-		final var config = ModConfig.getInstance();
-		if (!config.isEnabled.get() || !config.shouldColorOnlyOnOwnHit.get()) return;
-		
 		if (source.getEntity() != Minecraft.getInstance().player) return;
 		
 		final var self = (LivingEntity) (Object) this;

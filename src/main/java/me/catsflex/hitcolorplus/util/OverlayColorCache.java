@@ -1,6 +1,6 @@
 package me.catsflex.hitcolorplus.util;
 
-public final class ColorCache {
+public final class OverlayColorCache {
 	
 	// Default value. Set this to an impossible 32-bit integer value.
 	private static final long NULL_COLOR = Long.MAX_VALUE;

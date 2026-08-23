@@ -8,7 +8,7 @@ import me.catsflex.hitcolorplus.Main;
 import me.catsflex.hitcolorplus.config.option.BooleanOption;
 import me.catsflex.hitcolorplus.config.option.ColorOption;
 import me.catsflex.hitcolorplus.config.option.ConfigOption;
-import me.catsflex.hitcolorplus.util.RenderUtil;
+import me.catsflex.hitcolorplus.util.OverlayTexturePainter;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Files;
@@ -26,14 +26,14 @@ public final class ModConfig {
 	private static final ModConfig INSTANCE = new ModConfig();
 	
 	public final BooleanOption isEnabled = new BooleanOption("isEnabled", true);
-	public final ColorOption globalHitColor = new ColorOption("globalHitColor", RenderUtil.VANILLA_OVERLAY_COLOR);
+	public final ColorOption globalHitColor = new ColorOption("globalHitColor", OverlayTexturePainter.VANILLA_OVERLAY_COLOR);
 	public final BooleanOption shouldColorOnlyOnOwnHit = new BooleanOption("shouldColorOnlyOnOwnHit", false);
 	public final BooleanOption shouldColorEntities = new BooleanOption("shouldColorEntities", true);
 	public final BooleanOption shouldOverrideEntityColor = new BooleanOption("shouldOverrideEntityColor", false);
-	public final ColorOption entityHitColor = new ColorOption("entityHitColor", RenderUtil.VANILLA_OVERLAY_COLOR);
+	public final ColorOption entityHitColor = new ColorOption("entityHitColor", OverlayTexturePainter.VANILLA_OVERLAY_COLOR);
 	public final BooleanOption shouldColorArmor = new BooleanOption("shouldColorArmor", false);
 	public final BooleanOption shouldOverrideArmorColor = new BooleanOption("shouldOverrideArmorColor", false);
-	public final ColorOption armorHitColor = new ColorOption("armorHitColor", RenderUtil.VANILLA_OVERLAY_COLOR);
+	public final ColorOption armorHitColor = new ColorOption("armorHitColor", OverlayTexturePainter.VANILLA_OVERLAY_COLOR);
 	
 	private ModConfig() {}
 	
@@ -51,14 +51,14 @@ public final class ModConfig {
 			return;
 		}
 		
-		try (var reader = Files.newBufferedReader(CONFIG_PATH)) {
-			var element = JsonParser.parseReader(reader);
+		try (final var reader = Files.newBufferedReader(CONFIG_PATH)) {
+			final var element = JsonParser.parseReader(reader);
 			if (!element.isJsonObject()) {
 				throw new IllegalStateException("Config root is not a JSON object!");
 			}
 			
-			var json = element.getAsJsonObject();
-			for (var option : OPTIONS) {
+			final var json = element.getAsJsonObject();
+			for (final var option : OPTIONS) {
 				option.read(json);
 			}
 			
@@ -69,13 +69,13 @@ public final class ModConfig {
 	}
 	
 	public void save() {
-		var json = new JsonObject();
+		final var json = new JsonObject();
 		
-		for (var option : OPTIONS) {
+		for (final var option : OPTIONS) {
 			option.write(json);
 		}
 		
-		try (var writer = Files.newBufferedWriter(CONFIG_PATH)) {
+		try (final var writer = Files.newBufferedWriter(CONFIG_PATH)) {
 			GSON.toJson(json, writer);
 		} catch (Exception e) {
 			Main.LOGGER.warn("Failed to save config!", e);

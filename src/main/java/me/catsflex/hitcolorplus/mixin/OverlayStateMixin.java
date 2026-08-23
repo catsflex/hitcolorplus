@@ -2,8 +2,8 @@ package me.catsflex.hitcolorplus.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import me.catsflex.hitcolorplus.config.ModConfig;
-import me.catsflex.hitcolorplus.util.HitTracker;
-import me.catsflex.hitcolorplus.util.OverlayStateTracker;
+import me.catsflex.hitcolorplus.util.LocalHitTracker;
+import me.catsflex.hitcolorplus.util.OverlayState;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntityRenderer.class)
-public abstract class OverlayStateTrackerMixin {
+public abstract class OverlayStateMixin {
 	
 	@Inject(
 		method = "extractRenderState(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;F)V",
@@ -23,9 +23,9 @@ public abstract class OverlayStateTrackerMixin {
 	)
 	private void filterLocalHits(LivingEntity entity, LivingEntityRenderState state, float partialTick, CallbackInfo ci) {
 		final var config = ModConfig.getInstance();
-		if (!config.isEnabled.get() || !config.shouldColorOnlyOnOwnHit.get()) return;
+		if (!config.isEnabled.get() || !config.shouldColorOnlyOnOwnHit.get()) { return; }
 		
-		if (!state.hasRedOverlay || HitTracker.isRecentLocalHit(entity.getId())) return;
+		if (!state.hasRedOverlay || LocalHitTracker.isRecentLocalHit(entity.getId())) { return; }
 		
 		// Disable the overlay if the entity wasn't damaged by local player.
 		state.hasRedOverlay = false;
@@ -36,7 +36,7 @@ public abstract class OverlayStateTrackerMixin {
 		at = @At("HEAD")
 	)
 	private void captureDamageState(LivingEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState, CallbackInfo ci) {
-		OverlayStateTracker.set(state.hasRedOverlay);
+		OverlayState.set(state.hasRedOverlay);
 	}
 	
 	@Inject(
@@ -44,6 +44,6 @@ public abstract class OverlayStateTrackerMixin {
 		at = @At("TAIL")
 	)
 	private void clearDamageState(LivingEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState, CallbackInfo ci) {
-		OverlayStateTracker.clear();
+		OverlayState.clear();
 	}
 }

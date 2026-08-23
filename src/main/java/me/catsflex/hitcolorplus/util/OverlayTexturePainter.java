@@ -4,10 +4,10 @@ import com.mojang.blaze3d.platform.NativeImage;
 
 import java.awt.*;
 
-public final class RenderUtil {
+public final class OverlayTexturePainter {
 	public static final Color VANILLA_OVERLAY_COLOR = new Color(0x4DFF0000, true);
 	
-	private RenderUtil() {}
+	private OverlayTexturePainter() {}
 	
 	public static void fillOverlayRow(NativeImage image, int y, int hitColor) {
 		final int width = image.getWidth();

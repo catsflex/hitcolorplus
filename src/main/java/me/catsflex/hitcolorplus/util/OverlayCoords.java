@@ -2,7 +2,7 @@ package me.catsflex.hitcolorplus.util;
 
 import net.minecraft.client.renderer.texture.OverlayTexture;
 
-public final class OverlayUtil {
+public final class OverlayCoords {
 	private static final int NO_PROGRESS_X = OverlayTexture.NO_WHITE_U;
 	private static final int OVERLAY_Y = OverlayTexture.RED_OVERLAY_V;
 	
@@ -13,5 +13,5 @@ public final class OverlayUtil {
 	public static final int ARMOR_OVERLAY = OverlayTexture.pack(NO_PROGRESS_X, ARMOR_Y);
 	public static final int NO_OVERLAY = OverlayTexture.NO_OVERLAY;
 	
-	private OverlayUtil() {}
+	private OverlayCoords() {}
 }

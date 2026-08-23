@@ -17,7 +17,7 @@ public final class EnumOption<T extends Enum<T>> extends ConfigOption<T> {
 	
 	@Override
 	public void read(JsonObject json) {
-		if (!json.has(getKey())) return;
+		if (!json.has(getKey())) { return; }
 		
 		try {
 			set(Enum.valueOf(enumClass, json.get(getKey()).getAsString()));

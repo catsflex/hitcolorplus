@@ -1,15 +1,15 @@
 {
 	"required": true,
 	"minVersion": "0.8",
-	"package": "me.catsflex.${mod_package_id}.mixin",
+	"package": "${mod_group}.${mod_package}.mixin",
 	"compatibilityLevel": "JAVA_${java_version}",
 	"client": [
 		"ArmorOverlayMixin",
 		"EntityOverlayMixin",
-		"LivingEntityMixin",
-		"MinecraftMixin",
-		"OverlayStateTrackerMixin",
-		"OverlayTextureMixin"
+		"HitTrackerLifecycleMixin",
+		"LocalHitRecorderMixin",
+		"OverlayStateMixin",
+		"OverlayTexturePainterMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

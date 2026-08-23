@@ -10,7 +10,7 @@ public final class BooleanOption extends ConfigOption<Boolean> {
 	
 	@Override
 	public void read(JsonObject json) {
-		if (!json.has(getKey())) return;
+		if (!json.has(getKey())) { return; }
 		
 		set(json.get(getKey()).getAsBoolean());
 	}

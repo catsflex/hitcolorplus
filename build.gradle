@@ -2,10 +2,6 @@ plugins {
 	id "fabric-loom" version "${fabric_loom_version}"
 }
 
-def javaVersion = project.java_version as int
-version = project.mod_version
-group = project.maven_group
-
 remapJar {
 	archiveFileName.set("${project.mod_id}-v${project.mod_version}+mc${project.minecraft_version}-fabric.jar")
 }
@@ -26,8 +22,6 @@ dependencies {
 
 processResources {
 	def replaceProperties = [
-		"mod_id": project.mod_id,
-		"mod_package_id": project.mod_package_id,
 		"mod_name": project.mod_name,
 		"mod_description": project.mod_description,
 		"mod_version": project.mod_version,
@@ -36,7 +30,9 @@ processResources {
 		"mod_sources_url": project.mod_sources_url,
 		"mod_issues_url": project.mod_issues_url,
 		"mod_license": project.mod_license,
-		"maven_group": project.maven_group,
+		"mod_id": project.mod_id,
+		"mod_group": project.mod_group,
+		"mod_package": project.mod_package,
 		"java_version": project.java_version,
 		"minecraft_version": project.minecraft_version,
 		"fabric_loader_version": project.fabric_loader_version,
@@ -48,20 +44,17 @@ processResources {
 	
 	inputs.properties(replaceProperties)
 	
-	filesMatching([
-		"fabric.mod.json",
-		"**/*.mixins.json",
-		"assets/**/lang/*.json"
-	]) {
-		expand replaceProperties
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+	with copySpec {
+		from("src/main/resources") {
+			include "fabric.mod.json"
+			include "**/*.mixins.json"
+			include "assets/**/lang/*.json"
+			expand replaceProperties
+		}
 	}
 }
 
-tasks.withType(JavaCompile).configureEach {
-	it.options.encoding = "UTF-8"
-	it.options.release.set(javaVersion)
-}
-
 java {
-	toolchain.languageVersion = JavaLanguageVersion.of(javaVersion)
+	toolchain.languageVersion = JavaLanguageVersion.of(project.java_version)
 }

@@ -1,9 +1,9 @@
 package me.catsflex.hitcolorplus.util;
 
-public final class OverlayStateTracker {
+public final class OverlayState {
 	private static final ThreadLocal<Boolean> HAS_OVERLAY = ThreadLocal.withInitial(() -> false);
 	
-	private OverlayStateTracker() {}
+	private OverlayState() {}
 	
 	public static boolean get() {
 		return HAS_OVERLAY.get();

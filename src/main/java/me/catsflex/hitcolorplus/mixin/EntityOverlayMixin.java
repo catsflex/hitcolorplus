@@ -1,7 +1,7 @@
 package me.catsflex.hitcolorplus.mixin;
 
 import me.catsflex.hitcolorplus.config.ModConfig;
-import me.catsflex.hitcolorplus.util.OverlayUtil;
+import me.catsflex.hitcolorplus.util.OverlayCoords;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,8 +15,8 @@ public abstract class EntityOverlayMixin {
 	@Inject(method = "getOverlayCoords", at = @At("HEAD"), cancellable = true)
 	private static void removeEntityOverlay(LivingEntityRenderState state, float overlayProgress, CallbackInfoReturnable<Integer> cir) {
 		final var config = ModConfig.getInstance();
-		if (!config.isEnabled.get() || config.shouldColorEntities.get()) return;
+		if (!config.isEnabled.get() || config.shouldColorEntities.get()) { return; }
 		
-		cir.setReturnValue(OverlayUtil.NO_OVERLAY);
+		cir.setReturnValue(OverlayCoords.NO_OVERLAY);
 	}
 }

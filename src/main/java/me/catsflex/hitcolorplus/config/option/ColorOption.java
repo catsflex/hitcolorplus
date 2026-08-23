@@ -35,7 +35,7 @@ public final class ColorOption extends ConfigOption<Color> {
 	
 	@Override
 	public void read(JsonObject json) {
-		if (!json.has(getKey())) return;
+		if (!json.has(getKey())) { return; }
 		
 		// Skip the '#' character.
 		final var hex = json.get(getKey()).getAsString().substring(1);

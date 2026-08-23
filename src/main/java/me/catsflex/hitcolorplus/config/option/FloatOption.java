@@ -10,7 +10,7 @@ public final class FloatOption extends RangedConfigOption<Float> {
 	
 	@Override
 	public void read(JsonObject json) {
-		if (!json.has(getKey())) return;
+		if (!json.has(getKey())) { return; }
 		
 		set(json.get(getKey()).getAsFloat());
 	}

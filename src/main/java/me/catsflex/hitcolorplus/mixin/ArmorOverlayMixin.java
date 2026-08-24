@@ -3,8 +3,8 @@ package me.catsflex.hitcolorplus.mixin;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import me.catsflex.hitcolorplus.config.ModConfig;
-import me.catsflex.hitcolorplus.util.OverlayStateTracker;
-import me.catsflex.hitcolorplus.util.OverlayUtil;
+import me.catsflex.hitcolorplus.util.HitOverlayState;
+import me.catsflex.hitcolorplus.util.OverlayCoords;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
 import net.minecraft.client.renderer.rendertype.RenderType;
@@ -27,11 +27,11 @@ public abstract class ArmorOverlayMixin {
 	)
 	private int addArmorOverlay(Operation<Integer> original) {
 		final var config = ModConfig.getInstance();
-		if (!config.isEnabled.get() || !config.shouldColorArmor.get() || !OverlayStateTracker.get()) {
+		if (!config.isEnabled.get() || !config.shouldColorArmor.get() || !HitOverlayState.get()) {
 			return original.call();
 		}
 		
-		return OverlayUtil.ARMOR_OVERLAY;
+		return OverlayCoords.ARMOR_OVERLAY;
 	}
 	
 	@WrapOperation(
@@ -48,7 +48,9 @@ public abstract class ArmorOverlayMixin {
 		}
 		
 		// Swap with the entities' render type to accept colors.
-		return RenderTypes.entityCutoutNoCull(identifier);
+		// Use the version with z-offset for proper
+		// enchantment glint and armor trim render handling.
+		return RenderTypes.entityCutoutNoCullZOffset(identifier);
 	}
 	
 	@WrapOperation(
@@ -64,6 +66,6 @@ public abstract class ArmorOverlayMixin {
 			return original.call(decal);
 		}
 		
-		return RenderTypes.entityCutoutNoCull(Sheets.ARMOR_TRIMS_SHEET);
+		return RenderTypes.entityCutoutNoCullZOffset(Sheets.ARMOR_TRIMS_SHEET);
 	}
 }

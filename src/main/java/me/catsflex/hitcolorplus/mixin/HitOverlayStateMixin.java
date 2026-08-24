@@ -2,8 +2,8 @@ package me.catsflex.hitcolorplus.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import me.catsflex.hitcolorplus.config.ModConfig;
+import me.catsflex.hitcolorplus.util.HitOverlayState;
 import me.catsflex.hitcolorplus.util.LocalHitTracker;
-import me.catsflex.hitcolorplus.util.OverlayState;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntityRenderer.class)
-public abstract class OverlayStateMixin {
+public abstract class HitOverlayStateMixin {
 	
 	@Inject(
 		method = "extractRenderState(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;F)V",
@@ -36,7 +36,7 @@ public abstract class OverlayStateMixin {
 		at = @At("HEAD")
 	)
 	private void captureDamageState(LivingEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState, CallbackInfo ci) {
-		OverlayState.set(state.hasRedOverlay);
+		HitOverlayState.set(state.hasRedOverlay);
 	}
 	
 	@Inject(
@@ -44,6 +44,6 @@ public abstract class OverlayStateMixin {
 		at = @At("TAIL")
 	)
 	private void clearDamageState(LivingEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState cameraRenderState, CallbackInfo ci) {
-		OverlayState.clear();
+		HitOverlayState.clear();
 	}
 }

@@ -6,9 +6,9 @@
 	"client": [
 		"ArmorOverlayMixin",
 		"EntityOverlayMixin",
+		"HitOverlayStateMixin",
 		"HitTrackerLifecycleMixin",
 		"LocalHitRecorderMixin",
-		"OverlayStateMixin",
 		"OverlayTexturePainterMixin"
 	],
 	"injectors": {
